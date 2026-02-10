@@ -1,0 +1,661 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    /* Light Theme (Default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+    --primary: #3b82f6;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #06b6d4;
+    
+    /* RGB values for charts */
+    --primary-rgb: 59, 130, 246;
+    --secondary-rgb: 139, 92, 246;
+    --success-rgb: 16, 185, 129;
+    --danger-rgb: 239, 68, 68;
+    --warning-rgb: 245, 158, 11;
+}
+
+.dark-theme {
+    /* Dark Theme */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.4);
+    --primary: #60a5fa;
+    --secondary: #a78bfa;
+    --success: #34d399;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --info: #22d3ee;
+}
+
+/* ===== WITHDRAWAL MANAGER STYLES ===== */
+.withdrawal-manager-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.withdrawal-manager-card h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.withdrawal-form {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+}
+
+.withdrawal-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .withdrawal-form .form-row {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* Withdrawal specific styles */
+#newBalanceAfterWithdrawal {
+    background: var(--bg-primary);
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+/* Activity Type Badges */
+.activity-type {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trade-type {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+}
+
+.withdrawal-type {
+    background: rgba(var(--warning-rgb), 0.1);
+    color: var(--warning);
+}
+
+.status-badge.processing {
+    background: rgba(var(--info-rgb), 0.1);
+    color: var(--info);
+}
+
+/* Withdrawals Section in Journal */
+.withdrawals-section {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.withdrawals-section h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.withdrawals-table {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    -webkit-overflow-scrolling: touch;
+}
+
+.withdrawals-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.withdrawals-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--border-color);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.withdrawals-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.withdrawals-table tr:hover {
+    background: var(--bg-secondary);
+}
+
+.withdrawals-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== SETTINGS ENHANCEMENTS ===== */
+.setting-control {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.setting-control .form-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.export-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+/* ===== TRADER'S MINDSET ENHANCEMENTS ===== */
+.inspiration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.inspiration-card {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-hover);
+    transition: transform 0.3s;
+    border: none;
+    text-align: center;
+    color: white;
+}
+
+.inspiration-card:hover {
+    transform: translateY(-10px);
+}
+
+.inspiration-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.inspiration-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-weight: 700;
+}
+
+.inspiration-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.inspiration-quote {
+    font-style: italic;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.mindset-tips {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+.mindset-tips h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.tip-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.tip-item:hover {
+    background: rgba(var(--success-rgb), 0.1);
+    border-color: var(--success);
+    transform: translateX(5px);
+}
+
+.tip-item i {
+    color: var(--success);
+    font-size: 1.2rem;
+}
+
+.tip-item span {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ===== COMMUNITY CARD COLORS ===== */
+.telegram-card {
+    background: linear-gradient(135deg, #0088cc, #00aced);
+    color: white;
+}
+
+.youtube-card {
+    background: linear-gradient(135deg, #ff0000, #ff4d4d);
+    color: white;
+}
+
+.instagram-card {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: white;
+}
+
+.tiktok-card {
+    background: linear-gradient(135deg, #000000, #69c9d0, #ee1d52);
+    color: white;
+}
+
+.facebook-card {
+    background: linear-gradient(135deg, #1877f2, #0d8bf9);
+    color: white;
+}
+
+.academy-card {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+}
+
+.community-card {
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-hover);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.community-card:hover {
+    transform: translateY(-10px);
+}
+
+/* ===== GOALS PAGE (formerly Notebook) ===== */
+.notebook-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dream-input-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+/* ===== MENTORSHIP BANNER UPDATE ===== */
+.mentorship-banner {
+    background: linear-gradient(135deg, #2563eb, #8b5cf6);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    animation: glow 2s infinite alternate;
+    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+}
+
+@media (min-width: 768px) {
+    .mentorship-banner {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@keyframes glow {
+    from { box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3); }
+    to { box-shadow: 0 5px 30px rgba(139, 92, 246, 0.4); }
+}
+
+.join-1percent-btn {
+    background: white;
+    color: #2563eb;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.join-1percent-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+    background: #f8fafc;
+}
+
+/* ===== PROFESSIONAL ENHANCEMENTS ===== */
+.top-nav {
+    background: linear-gradient(135deg, var(--bg-card), rgba(var(--primary-rgb), 0.1));
+    border-bottom: 2px solid rgba(var(--primary-rgb), 0.1);
+}
+
+.logo h1 {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.chart-card {
+    border: 2px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.chart-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 40px rgba(var(--primary-rgb), 0.1);
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn-primary:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Loading animation enhancement */
+.loader {
+    background: linear-gradient(135deg, var(--primary), var(--secondary), #10b981);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.loader h2 {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Modal enhancements */
+.modal-content {
+    border: 2px solid var(--border-color);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .withdrawal-form .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .setting-control {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .setting-control .form-input {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .export-options {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .inspiration-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .withdrawal-manager-card,
+    .withdrawals-section {
+        padding: 1rem;
+    }
+    
+    .community-card {
+        padding: 1.5rem;
+    }
+    
+    .inspiration-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Print styles for professional PDF output */
+@media print {
+    .withdrawal-form,
+    .mentorship-banner,
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline,
+    .action-btn,
+    .menu-btn,
+    .sidebar,
+    .top-nav {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .page {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .stat-card,
+    .chart-card,
+    .trade-entry-card,
+    .recent-trades-card,
+    .balance-manager-card,
+    .withdrawal-manager-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+    
+    .trades-table table,
+    .withdrawals-table table {
+        width: 100% !important;
+        font-size: 10px !important;
+    }
+}
+
+/* Accessibility improvements */
+.btn-primary:focus,
+.btn-secondary:focus,
+.btn-outline:focus,
+.form-input:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary: #0056b3;
+        --secondary: #6f42c1;
+        --success: #28a745;
+        --danger: #dc3545;
+        --warning: #ffc107;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
